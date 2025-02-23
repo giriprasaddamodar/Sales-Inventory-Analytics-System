@@ -1,0 +1,25 @@
+CREATE DATABASE SalesInventoryDB;
+USE SalesInventoryDB;
+
+CREATE TABLE sales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100),
+    revenue DECIMAL(10,2),
+    sales_count INT,
+    sale_date DATE
+);
+
+CREATE TABLE inventory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100),
+    stock_level INT
+);
+
+-- Insert Sample Data
+INSERT INTO sales (product_name, revenue, sales_count, sale_date) 
+VALUES ('Laptop', 50000, 5, '2024-02-15'),
+       ('Smartphone', 30000, 10, '2024-02-16');
+
+INSERT INTO inventory (product_name, stock_level) 
+VALUES ('Laptop', 20),
+       ('Smartphone', 50);
