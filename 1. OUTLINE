@@ -1,0 +1,12 @@
+/SalesInventoryApp
+│── src
+│   ├── Sales.java
+│   ├── Inventory.java
+│   ├── DatabaseConnection.java
+│   ├── SalesService.java
+│   ├── InventoryService.java
+│   ├── MainApp.java
+│── database
+│   ├── sales_inventory.sql  (Database Schema)
+│── reports
+│   ├── PowerBI_Reports.pbix  (Power BI Dashboard)
