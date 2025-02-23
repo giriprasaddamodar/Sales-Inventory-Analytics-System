@@ -1,0 +1,42 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class SalesService {
+
+    public void displaySales() {
+        String query = "SELECT * FROM sales";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            System.out.println("Sales Data:");
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("id") +
+                        ", Product: " + rs.getString("product_name") +
+                        ", Revenue: " + rs.getDouble("revenue") +
+                        ", Sales Count: " + rs.getInt("sales_count") +
+                        ", Date: " + rs.getDate("sale_date"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addSale(String product, double revenue, int salesCount, String date) {
+        String query = "INSERT INTO sales (product_name, revenue, sales_count, sale_date) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, product);
+            stmt.setDouble(2, revenue);
+            stmt.setInt(3, salesCount);
+            stmt.setString(4, date);
+            stmt.executeUpdate();
+            System.out.println("Sale added successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
