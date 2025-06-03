@@ -1,0 +1,49 @@
+
+import java.sql.*;
+
+class Product {
+    int id;
+    String name;
+    int quantity;
+    double price;
+
+    Product(int id, String name, int quantity, double price) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    void insertIntoDB(Connection conn) throws SQLException {
+        String sql = "INSERT INTO products (id, name, quantity, price) VALUES (?, ?, ?, ?)";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, id);
+        stmt.setString(2, name);
+        stmt.setInt(3, quantity);
+        stmt.setDouble(4, price);
+        stmt.executeUpdate();
+        System.out.println("Inserted into DB: " + name);
+        stmt.close();
+    }
+}
+
+public class InventoryJDBC {
+    public static void main(String[] args) {
+        try {
+            // Load Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Connect to DB
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/inventory_db", "root", "your_password");
+
+            // Insert a product
+            Product p = new Product(101, "Mouse", 10, 599.99);
+            p.insertIntoDB(conn);
+
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
