@@ -1,46 +1,59 @@
-
 import java.sql.*;
+import java.util.Scanner;
 
-class Product {
-    int id;
-    String name;
-    int quantity;
-    double price;
-
-    Product(int id, String name, int quantity, double price) {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
-        this.price = price;
-    }
-
-    void insertIntoDB(Connection conn) throws SQLException {
-        String sql = "INSERT INTO products (id, name, quantity, price) VALUES (?, ?, ?, ?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, id);
-        stmt.setString(2, name);
-        stmt.setInt(3, quantity);
-        stmt.setDouble(4, price);
-        stmt.executeUpdate();
-        System.out.println("Inserted into DB: " + name);
-        stmt.close();
-    }
-}
-
-public class InventoryJDBC {
+public class InventoryApp {
     public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/inventory_db";
+        String user = "root";
+        String password = "your_password"; // Replace this
+
+        Scanner sc = new Scanner(System.in);
+
         try {
-            // Load Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
 
-            // Connect to DB
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/inventory_db", "root", "your_password");
+            while (true) {
+                System.out.println("\n1. Add Product\n2. View Products\n3. Exit");
+                System.out.print("Choose: ");
+                int choice = sc.nextInt();
 
-            // Insert a product
-            Product p = new Product(101, "Mouse", 10, 599.99);
-            p.insertIntoDB(conn);
+                if (choice == 1) {
+                    System.out.print("ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Name: ");
+                    String name = sc.nextLine();
+                    System.out.print("Quantity: ");
+                    int qty = sc.nextInt();
+                    System.out.print("Price: ");
+                    double price = sc.nextDouble();
 
+                    String insertSQL = "INSERT INTO products (id, name, quantity, price) VALUES (?, ?, ?, ?)";
+                    PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+                    pstmt.setInt(1, id);
+                    pstmt.setString(2, name);
+                    pstmt.setInt(3, qty);
+                    pstmt.setDouble(4, price);
+                    pstmt.executeUpdate();
+
+                    System.out.println("Product added.");
+                } else if (choice == 2) {
+                    ResultSet rs = stmt.executeQuery("SELECT * FROM products");
+                    System.out.println("ID | Name | Quantity | Price");
+                    while (rs.next()) {
+                        System.out.println(rs.getInt("id") + " | " +
+                                           rs.getString("name") + " | " +
+                                           rs.getInt("quantity") + " | " +
+                                           rs.getDouble("price"));
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            sc.close();
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
