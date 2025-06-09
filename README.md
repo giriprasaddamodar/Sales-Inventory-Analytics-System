@@ -47,4 +47,66 @@ A Java-based desktop/CLI application that tracks sales performance, revenue tren
 •	Backend: Java (Core Java + JDBC for database connectivity)
 •	Database: MySQL (for storing sales & inventory data)
 •	Data Analysis & Reporting: Power BI (to visualize trends)
-________________________________________
+
+🛒 Sales & Inventory Tracker – Java + MySQL + Power BI
+
+ 🔧 Tools Used
+- Java (Basic Console App)
+- MySQL (Database)
+- JDBC (Java Database Connectivity)
+- Power BI (Data Visualization)
+
+---
+
+💡 Project Description
+This is a beginner-friendly project that simulates a simple inventory tracker system. It allows users to add and view product data using a Java console application, stores data in a MySQL database, and displays visual insights using Power BI.
+
+---
+
+ 📁 Folder Structure
+- `java-code/` – Contains Java source code (`InventoryApp.java`)
+- `sql/` – SQL file to create the database and products table (`inventory_db.sql`)
+- `powerbi/` – Contains Power BI report file (`SalesDashboard.pbix`)
+- `README.md` – This file
+- `project-summary.txt` – Quick summary for interviews
+
+---
+
+📌 Features
+- Add product: ID, name, quantity, and price
+- View all product records in a table format
+- Connect Power BI to MySQL to visualize:
+  - Product vs Quantity (Bar Chart)
+  - Total stock value (Card)
+  - Complete product list (Table)
+
+---
+
+▶️ How to Run
+
+1. SQL Setup
+- Import `inventory_db.sql` into MySQL Workbench or any SQL client
+
+2. Java App
+- Open `InventoryApp.java` in Eclipse/IntelliJ
+- Add JDBC driver to your project
+- Replace `your_password` in code with your MySQL password
+- Run the code to insert/view products
+
+3. Power BI Dashboard
+- Open `SalesDashboard.pbix` in Power BI Desktop
+- Connect to MySQL database `inventory_db`
+- Load `products` table to generate visuals
+
+---
+
+Power BI Visuals
+- 📈 Bar Chart – Product vs Quantity
+- 💳 Card – Total stock value (DAX)
+- 📋 Table – All product details
+
+---
+
+👨‍💻 Developer
+Giriprasad Damodar  
+ECE Graduate | Beginner Java & SQL Developer  
