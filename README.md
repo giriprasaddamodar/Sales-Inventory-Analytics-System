@@ -107,6 +107,5 @@ Power BI Visuals
 
 ---
 
-👨‍💻 Developer
-Giriprasad Damodar  
-ECE Graduate | Beginner Java & SQL Developer  
+![image](https://github.com/user-attachments/assets/8e6392c0-8388-4ad3-9891-7bce5e0140b3)
+
