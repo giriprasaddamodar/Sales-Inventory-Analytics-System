@@ -1,0 +1,50 @@
+📄 Project Summary: Sales & Inventory Tracker
+
+---
+
+🎯 Objective:
+To create a simple inventory management system using Java for logic, MySQL for data storage, and Power BI for business visualization.
+
+---
+
+🛠️ Technologies Used:
+- Java (Console application)
+- MySQL (Database)
+- JDBC (Connection between Java and DB)
+- Power BI (Dashboards and charts)
+
+---
+
+🧩 Key Features:
+- Add new products with ID, name, quantity, and price
+- View product list from MySQL table
+- Power BI connects directly to DB to visualize data
+
+---
+
+🗂️ How It Works:
+1. Java program runs in terminal
+2. You can enter product details (add/view)
+3. Data is stored in `products` table in MySQL
+4. Power BI fetches and shows the data using:
+   - Bar chart (stock levels)
+   - Card (total stock value)
+   - Table (product-wise details)
+
+---
+
+💬 Keywords to Use in Interview:
+- "Java console app"
+- "JDBC connection"
+- "SQL insert and select queries"
+- "Power BI dashboards"
+- "CRUD operations"
+- "Beginner-level data handling"
+
+---
+
+🧠 Interview Answer (Short):
+“I built a basic inventory app using Java and stored the data in MySQL using JDBC. Then I used Power BI to visualize it — like showing which product has the highest stock. It helped me understand full-stack data flow from code to dashboard.”
+
+---
+
