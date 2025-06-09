@@ -1,7 +1,0 @@
-
-Setup MySQL:
-mysql -u root -p < database/sales_inventory.sql
-
-Compile & Run Java Application:
-javac *.java
-java MainApp
