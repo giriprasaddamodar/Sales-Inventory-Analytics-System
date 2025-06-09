@@ -1,0 +1,21 @@
+📌 Purpose: Visualize data using Power BI
+
+🛠️ What to Do:
+Open Power BI Desktop
+
+Click “Get Data” → MySQL
+
+Enter:
+
+Server: localhost
+
+Database: inventory_db
+
+Load products table
+
+📊 Create These Visuals:
+✅ Table → Show ID, Name, Quantity, Price
+
+✅ Bar Chart → Product vs Quantity
+
+✅ Card → Total Stock Value (using DAX)
